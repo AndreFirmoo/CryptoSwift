@@ -31,10 +31,6 @@ public final class ChaCha20: BlockCipher {
   public init(key: Array<UInt8>, iv nonce: Array<UInt8>) throws {
     precondition(nonce.count == 12 || nonce.count == 8)
 
-    if key.count != 32 {
-      throw Error.invalidKeyOrInitializationVector
-    }
-
     self.key = Key(bytes: key)
     self.keySize = self.key.count
 
