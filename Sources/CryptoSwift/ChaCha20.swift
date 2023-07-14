@@ -47,7 +47,7 @@ public final class ChaCha20: BlockCipher {
   fileprivate func core(block: inout Array<UInt8>, counter: Array<UInt8>, key: Array<UInt8>) {
     precondition(block.count == ChaCha20.blockSize)
     precondition(counter.count == 16)
-    precondition(key.count == 32)
+    
 
     let j0: UInt32 = 0x61707865
     let j1: UInt32 = 0x3320646e // 0x3620646e sigma/tau
@@ -206,7 +206,6 @@ public final class ChaCha20: BlockCipher {
   // XORKeyStream
   func process(bytes: ArraySlice<UInt8>, counter: inout Array<UInt8>, key: Array<UInt8>) -> Array<UInt8> {
     precondition(counter.count == 16)
-    precondition(key.count == 32)
 
     var block = Array<UInt8>(repeating: 0, count: ChaCha20.blockSize)
     var bytesSlice = bytes
